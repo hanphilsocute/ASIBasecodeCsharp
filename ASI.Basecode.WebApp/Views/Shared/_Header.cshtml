@@ -5,6 +5,12 @@
         <img src="~/img/asi-logo-invert.svg"
              style="width: 185px;" alt="logo"
              onclick="window.location.href = '@Url.Action("Index", "Home")';">
+
+        <div class="logosec hover-pointer">
+            <div class="d-flex align-items-center justify-content-center">
+                <a asp-controller="Book" asp-action="Index" class="btn btn-outline-primary">View Book</a>
+            </div>
+        </div>
     </div>
     <div class="logosec">
         @HttpContextAccessor.HttpContext.Session.GetString("UserName")
