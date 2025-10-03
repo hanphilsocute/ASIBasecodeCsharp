@@ -20,6 +20,12 @@
                             <p class="card-text">By <b>@book.Author</b></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">@book.CreatedTime.ToString("dd/MM/yyyy")</small>
+                                <div>
+                                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <form asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

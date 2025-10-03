@@ -31,5 +31,39 @@ namespace ASI.Basecode.WebApp.Controllers
             _bookService.AddBook(book);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var book = _bookService.GetById(id);
+            if (book == null)
+            {
+                TempData["ErrorMessage"] = "Book not found.";
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Book book)
+        {
+            _bookService.UpdateBook(book);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            _bookService.DeleteBook(id);
+            return RedirectToAction("Index");
+        }
+
+        // Simple convenience endpoint if user navigates via GET
+        [HttpGet]
+        public IActionResult Delete(int id, string? confirm)
+        {
+            _bookService.DeleteBook(id);
+            return RedirectToAction("Index");
+        }
     }
 }
